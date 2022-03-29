@@ -1158,7 +1158,7 @@ namespace gomea
       
       FILE *file;
       file = fopen( "random_seed.dat", "w");
-    fprintf( file, "%lld\n", random_seed );
+    fprintf( file, "%ld\n", random_seed );
       fclose(file);
 
   }

@@ -1,3 +1,6 @@
+# Output Folder
+out
+
 # Prerequisites
 *.d
 
@@ -41,10 +44,18 @@ statistics*
 
 # executables
 bezea
-uhv_gomea
-uhv_grad
 uhv_adam
+uhv_adam_hybrid
+uhv_adam_sourcecode
+uhv_classical_hybrid
+uhv_hybrid_hard_switch
+uhv_gomea
 uhv_gomea_grad
+uhv_grad
+uhv_hybrid_naive
+uhv_optimal
+uhv_optimal_hybrid
+uhv_switch
 sofomore_gomea
 mogomea
 mamalgam

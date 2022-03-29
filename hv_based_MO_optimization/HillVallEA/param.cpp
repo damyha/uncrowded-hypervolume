@@ -854,6 +854,22 @@ namespace hillvallea
     return result;
   }
 
+  /**
+   * Print the matrix to the console
+   */
+  void matrix_t::printMatrix()
+  {
+      for(size_t i = 0; i < raw_rows; ++i)
+      {
+          for(size_t j = 0; j < raw_cols - 1; ++j)
+          {
+              printf("%lf, ", raw[i][j]);
+          }
+          printf("%lf\n", raw[i][raw_cols - 1]);
+
+      }
+  }
+
 
   
 }

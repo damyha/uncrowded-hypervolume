@@ -80,7 +80,9 @@ namespace hillvallea
     vec_t gradient;
     vec_t adam_mt;
     vec_t adam_vt;
-    
+
+    vec_t gamma_vector; // Used for UHV-ADAM-POPULATION in case populations are shuffled
+
     
   };
 
