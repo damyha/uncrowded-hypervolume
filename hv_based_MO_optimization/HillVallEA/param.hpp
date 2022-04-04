@@ -124,6 +124,9 @@ namespace hillvallea
     // diagonal matrices
     void diagonalMatrixSquareRoot();
 
+    // print
+    void printMatrix();
+
   private:
     
     // the raw data is private, although accessible via toArray();

@@ -29,13 +29,15 @@ github.com/SCMaree/HillVallEA
 #endif
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-namespace hillvallea {
+namespace hillvallea{
 
   class solution_t;
   class population_t;
+  class optimization_branch_t;
   class edge_t;
   class node_t;
   class hillvallea_t;
+  class optimal_hybrid_process_t;
   class optimizer_t;
   class amalgam_t;
   class hgml_t;
@@ -50,9 +52,18 @@ namespace hillvallea {
   class FOS_t;
   class FOS_element_t;
   class adam_t;
+  class adam_on_population_t;
+  class optimal_hybrid_optimizer_t;
+  class naive_resource_allocation_scheme_t;
+  class resource_allocation_scheme_process_t;
+  class UHVSwitch;
+  class UHVSWITCHProcess;
+  class ClassicalHybrid;
+  class ClassicalHybridProcess;
 
   typedef std::shared_ptr<solution_t> solution_pt;
   typedef std::shared_ptr<population_t> population_pt;
+  typedef std::shared_ptr<optimization_branch_t> optimization_branch_pt;
   typedef std::shared_ptr<edge_t> edge_pt;
   typedef std::shared_ptr<node_t> node_pt;
   typedef std::shared_ptr<hillvallea_t> hillvallea_pt;
@@ -72,8 +83,19 @@ namespace hillvallea {
   typedef std::mt19937 rng_t;
   typedef std::shared_ptr<std::mt19937> rng_pt;
 
+  typedef std::shared_ptr<adam_on_population_t> adam_on_population_pt;
+  typedef std::shared_ptr<optimal_hybrid_optimizer_t> optimal_hybrid_optimizer_pt;
+  typedef std::shared_ptr<naive_resource_allocation_scheme_t> naive_resource_allocation_scheme_pt;
+  typedef std::shared_ptr<UHVSwitch> UHVSwitch_pt;
+  typedef std::shared_ptr<ClassicalHybrid> classicalHybrid_pt;
+
+  typedef std::shared_ptr<resource_allocation_scheme_process_t> resource_allocation_scheme_process_pt;
+  typedef std::shared_ptr<optimal_hybrid_process_t> optimal_hybrid_process_pt;
+  typedef std::shared_ptr<UHVSWITCHProcess> UHVSWITCHProcess_pt;
+  typedef std::shared_ptr<ClassicalHybridProcess> classicalHybridProcess_pt;
+
   class fitness_t;
   typedef std::shared_ptr<fitness_t> fitness_pt;
-  
+
 }
 

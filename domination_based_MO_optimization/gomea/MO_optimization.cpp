@@ -798,7 +798,7 @@ namespace gomea
       sprintf(string, "%sstatistics%s.dat", write_directory.c_str(), file_appendix.c_str());
       file = fopen(string, "w");
       
-      sprintf(string, "# Generation  Evaluations   Time (s)");
+      sprintf(string, "Generation  MO-evals   Time(s)");
       fputs(string, file); if (print_verbose_overview) std::cout << string;
       for (size_t i = 0; i < fitness_function->get_number_of_objectives(); i++)
       {
@@ -806,7 +806,7 @@ namespace gomea
         fputs(string, file); if (print_verbose_overview) std::cout << string;
       }
       
-      sprintf(string, " Hypervol. Appr.set     IGD Appr.set           GD Appr.set              IGDX       SR     Smoothness Appr.set.size  Pop.rnk   Subgen.  Pop.size    Rank0.sols Archive_size HV Archive             IGD Archive            GD Archive               IGDX Archive SR Archive\n");
+      sprintf(string, " Best-HV     IGD-Appr.set           GD-Appr.set              IGDX       SR     Smoothness size  Pop.rnk   Subgen.  Pop.size    Rank0.sols Archive_size HV-Archive             IGD-Archive            GD-Archive               IGDX-Archive SR-Archive\n");
       fputs(string, file); if (print_verbose_overview) std::cout << string;
       
     }
@@ -1013,25 +1013,52 @@ namespace gomea
    */
   void writeGenerationalSolutions( short final )
   {
+      // Writing the approximation set
+//      char  string[1000];
+//
+//      // Approximation set
+//      if (final) {
+//        sprintf(string, "%sapproximation_set_final%s.dat", write_directory.c_str(), file_appendix.c_str());
+//      }
+//      else {
+//        sprintf(string, "%sapproximation_set_generation%s_%05d.dat", write_directory.c_str(), file_appendix.c_str(), total_number_of_generations);
+//      }
+//
+//    hicam::rng_pt rng = std::make_shared<hicam::rng_t>(1104913 + total_number_of_generations);
+//    hicam::population_t pop;
+//    pop.sols.resize(approximation_set_size);
+//
+//    // copy the gomea archive to a HICAM data structure
+//    for(int i = 0; i < approximation_set_size; i++ ) {
+//      pop.sols[i] = IndividualToSol(approximation_set[i]);
+//    }
+//
+//    hicam::hvc_pt hvc = std::make_shared<hicam::hvc_t>(fitness_function);
+//    std::vector<hicam::population_pt> archives;
+//    // unsigned int temp_fevals = 0;
+//    // double ael = 0.0;
+//    // hvc->cluster(pop, archives, temp_fevals, ael, false, true, 0, rng);
+//    pop.writeToFile(string);
+
       char  string[1000];
-      
+
       // Approximation set
       if (final) {
-        sprintf(string, "%sapproximation_set_final%s.dat", write_directory.c_str(), file_appendix.c_str());
+        sprintf(string, "%spopulation_final%s.dat", write_directory.c_str(), file_appendix.c_str());
       }
       else {
-        sprintf(string, "%sapproximation_set_generation%s_%05d.dat", write_directory.c_str(), file_appendix.c_str(), total_number_of_generations);
+        sprintf(string, "%spopulation_generation%s_%05d.dat", write_directory.c_str(), file_appendix.c_str(), total_number_of_generations);
       }
-    
+
     hicam::rng_pt rng = std::make_shared<hicam::rng_t>(1104913 + total_number_of_generations);
     hicam::population_t pop;
-    pop.sols.resize(approximation_set_size);
-	
-    // copy the gomea archive to a HICAM data structure
-    for(int i = 0; i < approximation_set_size; i++ ) {
-      pop.sols[i] = IndividualToSol(approximation_set[i]);
+    pop.sols.resize(population_sizes[0]);
+
+    // Copy the first population to a HICAM data structure
+    for(int solution_index = 0; solution_index < population_sizes[0]; solution_index++ ) {
+      pop.sols[solution_index] = IndividualToSol(populations[0][solution_index]);
     }
-	
+
     hicam::hvc_pt hvc = std::make_shared<hicam::hvc_t>(fitness_function);
     std::vector<hicam::population_pt> archives;
     // unsigned int temp_fevals = 0;

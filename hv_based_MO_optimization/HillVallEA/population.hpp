@@ -25,6 +25,8 @@ namespace hillvallea
     //------------------------------------------
     population_t();
     ~population_t();
+
+    population_pt deepCopyPopulation();
     
     // essential data members
     //------------------------------------------
@@ -46,6 +48,7 @@ namespace hillvallea
     // Sorting and ranking
     //------------------------------------------
     void sort_on_fitness();
+    std::vector<size_t> sort_solution_index_on_fitness();
 
     // Distribution parameter estimation
     // Maximum likelihood estimation of mean and covariance
@@ -86,6 +89,10 @@ namespace hillvallea
     //--------------------------------------------
     solution_pt first() const;
     solution_pt last() const;
+    double best_fitness() const;
+    size_t bestSolutionIndex() const;
+    solution_pt bestSolution() const;
+    double sum_fitness() const;
     double average_fitness() const;
     double fitness_variance() const;
     double relative_fitness_std() const;

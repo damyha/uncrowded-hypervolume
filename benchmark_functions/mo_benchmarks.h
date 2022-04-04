@@ -1,5 +1,8 @@
 #pragma once
 
+#include "bi_exp_cos_decay.h"
+#include "bi_convex_sphere_min_sphere_cosine.h"
+#include "bi-rastrigin.h"
 #include "genMED.h"
 #include "genMEDcurve.h"
 #include "ZDT1.h"
@@ -24,6 +27,7 @@
 #include "sphere-sep-1-concave.h"
 #include "cigtab-sep-1.h"
 #include "sphere-elli.h"
+#include "sphere-michalewicz.h"
 #include "sphere-rosenbrock.h"
 #include "sphere-rastrigin-strong.h"
 #include "sphere-rastrigin-weak.h"
@@ -70,6 +74,10 @@ hicam::fitness_pt getObjectivePointer(int index)
     case  32: return(std::make_shared<hicam::sphereRastriginWeak_t>(10));
     case  33: return(std::make_shared<hicam::sphereRastriginStrong_t>(10));
     case  34: return(std::make_shared<hicam::MinDistmm_t>());
+    case  35: return(std::make_shared<hicam::biConvexSphereMinSphereCosine>());
+    case  36: return(std::make_shared<hicam::SphereMichalewicz>());
+    case  37: return(std::make_shared<hicam::biRastrigin_t>());
+
       
     case  51: return(std::make_shared<hicam::wfg_t>(1));
     case  52: return(std::make_shared<hicam::wfg_t>(2));

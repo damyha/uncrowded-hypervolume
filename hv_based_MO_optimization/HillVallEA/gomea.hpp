@@ -55,6 +55,8 @@ namespace hillvallea
       out_of_bounds_draws = other.out_of_bounds_draws;
       distribution_multiplier = other.distribution_multiplier;
     }
+
+    FOS_element_pt clone();
   };
   
   class FOS_t
@@ -62,6 +64,8 @@ namespace hillvallea
   public:
     std::vector<FOS_element_pt> sets;
     size_t length() const { return sets.size(); }
+
+    FOS_pt clone();
   };
   
   class gomea_t : public optimizer_t
@@ -74,6 +78,7 @@ namespace hillvallea
     gomea_t(const size_t number_of_parameters, const vec_t & lower_param_bounds, const vec_t & upper_param_bounds, double init_univariate_bandwidth, int version, fitness_pt fitness_function, rng_pt rng);
     ~gomea_t();
     optimizer_pt clone() const;
+    gomea_pt clone(const population_pt& newPopulation) const;
     
     std::string name() const;
     size_t recommended_popsize(const size_t problem_dimension) const;
@@ -136,6 +141,7 @@ namespace hillvallea
     void ezilaitiniMemory( void );
     
     short isParameterInRangeBounds( double & parameter, int dimension ) const;
+    std::string convertUHV_GOMEALinkageModelNameToString();
     
     // Gradient stuff
     //---------------------------------------------
@@ -195,7 +201,7 @@ namespace hillvallea
      rng_pt rng,
      const int FOS_element_ub // for efficiency
   );
-  
+
   FOS_pt updateLinkageTree(
      const matrix_t & input_matrix,
      FOS_pt old_FOS,

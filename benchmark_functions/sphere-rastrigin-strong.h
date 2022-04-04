@@ -81,7 +81,7 @@ namespace hicam
       for(size_t i = 1; i < sol.param.size(); ++i) {
         sol.obj[1] += sol.param[i] * sol.param[i] - A * cos(2*PI*sol.param[i]);
       }
-      sol.obj[1] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
+//      sol.obj[1] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
       
       sol.constraint = 0;
     }
@@ -104,7 +104,7 @@ namespace hicam
       for(size_t i = 1; i < sol.param.size(); ++i) {
         sol.obj[1] += sol.param[i] * sol.param[i] - A * cos(2*PI*sol.param[i]);
       }
-      sol.obj[1] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
+//      sol.obj[1] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
       
       
       sol.constraint = 0;
@@ -120,11 +120,11 @@ namespace hicam
       
       // f2
       sol.gradients[1][0] = 2 * (sol.param[0] - optimum_x0_shift) + 2 * PI * A * sin(2*PI*(sol.param[0] - optimum_x0_shift));
-      sol.gradients[1][0] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
+//      sol.gradients[1][0] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
       
       for(size_t i = 1; i < sol.param.size(); ++i) {
         sol.gradients[1][i] = 2 * sol.param[i] + 2 * PI * A * sin(2*PI*sol.param[i]);
-        sol.gradients[1][i] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
+//        sol.gradients[1][i] /= (A * sol.param.size() + optimum_x0_shift*optimum_x0_shift);
       }
       
       
